@@ -1,25 +1,30 @@
-name : "Memebot"
+name: Memebot
 
 on:
   schedule:
-    - cron : "*/1 * * * *"
+    - cron: "*/1 * * * *"
   push:
     branches: [ main ]
 
-
 jobs:
-  execute:
+  meme-generation:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Set up Python 3.9
-         uses: actions/setup-python@v2.2.2
-         with:
-           python-version: 3.9
 
-      - name : Meme
-        run: |  
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.9
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v2
+        with:
+          key: "python-dependencies-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}"
+          path: "~/.cache/pip"
+
+      - name: Generate memes
+        run: |
+          pip install requests
           python3 test.py
-          
