@@ -1,0 +1,25 @@
+name : "Memebot"
+
+on:
+  schedule:
+    - cron : "*/1 * * * *"
+  push:
+    branches: [ main ]
+
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python 3.9
+         uses: actions/setup-python@v2.2.2
+         with:
+           python-version: 3.9
+
+      - name : Meme
+        run: |  
+          python3 test.py
+          
