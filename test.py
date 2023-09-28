@@ -13,5 +13,6 @@ def get_meme():
     y = x["data"]['children'][0]['data']['url']
     return y
 
-url = f"https://api.telegram.org/bot{os.environ["BOT"]}/sendPhoto?chat_id=-1001720367079&photo={get_meme()}"
+k = os.environ["BOT"]
+url = f"https://api.telegram.org/bot{k}/sendPhoto?chat_id=-1001720367079&photo={get_meme()}"
 get(url)
