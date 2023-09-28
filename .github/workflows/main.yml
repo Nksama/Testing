@@ -9,7 +9,9 @@ on:
 jobs:
   meme-generation:
     runs-on: ubuntu-latest
-  
+
+    env:
+      BOT: ${{ secrets.BOT }}
     steps:
       - uses: actions/checkout@v2
 
@@ -23,9 +25,6 @@ jobs:
         with:
           key: "python-dependencies-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}"
           path: "~/.cache/pip"
-
-        env:
-          BOT : ${{ secrets.BOT }}
         
       - name: Generate memes
         run: |
