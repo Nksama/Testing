@@ -20,10 +20,13 @@ def main(_,m : Message):
 
 @bot.on_message(filters.command("start"))
 def start(_,m : Message):
-    msg_id = m.text.split(" ")[1]
-    msg_id = int(msg_id)
-    doc = bot.get_messages(CHANNEL_ID , msg_id)
-    doc.copy(m.chat.id)
+    if len(message.text.split(" ")) == 1:
+        message.reply("Hello there, only admins can use me")
+    else:
+        msg_id = m.text.split(" ")[1]
+        msg_id = int(msg_id)
+        doc = bot.get_messages(CHANNEL_ID , msg_id)
+        doc.copy(m.chat.id)
 
 
 bot.run()
