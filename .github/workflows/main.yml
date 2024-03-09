@@ -27,10 +27,10 @@ jobs:
            python-version: 3.9
 
        - name: Running
+         env:
+            BTOKEN: ${{ secrets.BTOKEN }}
          timeout-minutes: 359
          continue-on-error: true
-         env:
-            BTOKEN: ${{ secrets.B_TOKEN }}
          run: |
            ls
            pip install -r requirements.txt
