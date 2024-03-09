@@ -20,7 +20,7 @@ def main(_,m : Message):
 
 @bot.on_message(filters.command("start"))
 def start(_,m : Message):
-    if len(message.text.split(" ")) == 2:
+    if len(m.text.split(" ")) == 2:
         msg_id = m.text.split(" ")[1]
         msg_id = int(msg_id)
         doc = bot.get_messages(CHANNEL_ID , msg_id)
