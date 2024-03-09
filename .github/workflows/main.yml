@@ -30,7 +30,7 @@ jobs:
          timeout-minutes: 359
          continue-on-error: true
          env:
-          BTOKEN: ${{ secrets.B_TOKEN }}
+            BTOKEN: ${{ secrets.B_TOKEN }}
          run: |
            ls
            pip install -r requirements.txt
