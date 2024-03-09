@@ -25,7 +25,7 @@ def start(_,m : Message):
         msg_id = int(msg_id)
         doc = bot.get_messages(CHANNEL_ID , msg_id)
         doc.copy(m.chat.id)
-    message.reply("Hello there, only admins can use me")
+    m.reply("Hello there, only admins can use me")
 
 
 bot.run()
