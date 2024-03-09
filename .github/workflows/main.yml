@@ -32,5 +32,6 @@ jobs:
          env:
           BTOKEN: ${{ secrets.B_TOKEN }}
          run: |
+           ls
            pip install requirements.txt
            python3 uploadbot.py
