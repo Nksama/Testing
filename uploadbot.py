@@ -40,6 +40,7 @@ def upload(_, m):
     m.reply("UPLOADING...")
     bot.send_chat_action(m.from_user.id , enums.ChatAction.UPLOAD_VIDEO)
     m.reply_document(filename)
+    os.remove(filename)
 
 
 bot.run()
