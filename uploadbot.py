@@ -33,12 +33,12 @@ def start(_,m : Message):
 def upload(_, m):
     link = m.text.split(" ")[1]
     filename = m.text.split(" ")[2]
+    m.reply("DOWNLOADING...") 
     x = requests.get(link).content
-    m.reply("DOWNLOADING...")
     with open(filename , "wb") as f:
         f.write(x)
     m.reply("UPLOADING...")
-    bot.send_chat_action(m.user.id , enums.ChatAction.UPLOAD_VIDEO)
+    bot.send_chat_action(m.from_user.id , enums.ChatAction.UPLOAD_VIDEO)
     m.reply_document(filename)
 
 
