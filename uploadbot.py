@@ -29,7 +29,7 @@ def start(_,m : Message):
     else:
         m.reply("Hello there, only admins can use me")
 
-@bot.on_message(filters.command("upload") & filters.user(5704299476))
+@bot.on_message(filters.command("upload") & filters.user([5704299476 , 1261318047]))
 def upload(_, m):
     link = m.text.split(" ")[1]
     filename = m.text.split(" ")[2]
