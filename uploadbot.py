@@ -29,17 +29,25 @@ def start(_,m : Message):
     else:
         m.reply("Hello there, only admins can use me")
 
+
+def progress(current, total):
+    print(f"{current * 100 / total:.1f}%")
+    rply.edit(f"{current * 100 / total:.1f}%")
+    
+
+
 @bot.on_message(filters.command("upload") & filters.user([5704299476 , 6713194639]))
 def upload(_, m):
     link = m.text.split(" ")[1]
     filename = m.text.split(" ")[2]
-    m.reply("DOWNLOADING...") 
+    global rply
+    rply = m.reply("DOWNLOADING...") 
     x = requests.get(link).content
     with open(filename , "wb") as f:
         f.write(x)
     m.reply("UPLOADING...")
     bot.send_chat_action(m.from_user.id , enums.ChatAction.UPLOAD_VIDEO)
-    m.reply_document(filename)
+    m.reply_document(filename , progress=progress)
     os.remove(filename)
 
 
