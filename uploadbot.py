@@ -11,7 +11,7 @@ bot = Client(
 )
 
 CHANNEL_ID = -1001797893141
-BOT_USERNAME = "dynastyanimeuploaderbot" #WITOUT @
+BOT_USERNAME = "AnimeDynastyBot" #WITOUT @
 
 @bot.on_message(filters.document & filters.user([2114972069, 5704299476, 6713194639]))
 def main(_,m : Message):
