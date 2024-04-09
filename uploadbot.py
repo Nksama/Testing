@@ -40,12 +40,12 @@ def progress(current, total):
 def upload(_, m):
     link = m.text.split(" ")[1]
     filename = m.text.split(" ")[2]
-    global rply
-    rply = m.reply("DOWNLOADING...") 
+    m.reply("DOWNLOADING...") 
     x = requests.get(link).content
     with open(filename , "wb") as f:
         f.write(x)
-    m.reply("UPLOADING...")
+    global rply
+    rply = m.reply("UPLOADING...")
     bot.send_chat_action(m.from_user.id , enums.ChatAction.UPLOAD_VIDEO)
     m.reply_document(filename , progress=progress)
     os.remove(filename)
